@@ -15,10 +15,7 @@ class API:
         params.update({"m": mode, "limit": limit})
         r = requests.get(self.base_url + '/api/get_beatmaps', params=params)
         try:
-            _return = list()
-            for bp in r.json():
-                _return.insert(0, beatmap.Beatmap(bp))
-            return _return
+            return [beatmap.Beatmap(bp) for bp in r.json()]
         except IndexError:
             return None
 
@@ -27,7 +24,7 @@ class API:
         params.update({"m": mode, "u": name})
         r = requests.get(self.base_url + '/api/get_user', params=params)
         try:
-            return user.User(r.json()[0])
+            return [user.User(user) for user in r.json()]
         except IndexError:
             return None
 
@@ -37,7 +34,10 @@ class API:
             params.update({"u": username, "type": "string"})
         params.update({"b": beatmap_id, "m": mode, "limit": limit})
         r = requests.get(self.base_url + '/api/get_user', params=params)
-        print(r.json())
+        try:
+            return [beatmap.Scores(score) for score in r.json()]
+        except IndexError:
+            return None
 
     def get_user_best(self, username: str, mode=0, limit=10):
         params = dict(k=self.token)
@@ -46,7 +46,7 @@ class API:
         params.update({"m": mode, "limit": limit})
         r = requests.get(self.base_url + '/api/get_user_best', params=params)
         try:
-            return user.UserBest(r.json()[0])
+            return [user.UserBest(best) for best in r.json()]
         except IndexError:
             return None
 
@@ -57,6 +57,7 @@ class API:
         params.update({"m": mode, "limit": limit})
         r = requests.get(self.base_url + '/api/get_user_recent', params=params)
         try:
-            return user.UserRecent(r.json()[0])
+            return [user.UserRecent(recent) for recent in r.json()]
         except IndexError:
             return None
+
