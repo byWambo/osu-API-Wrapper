@@ -1,4 +1,4 @@
-__slots__ = ('Beatmap')
+__slots__ = ('Beatmap', 'Scores')
 
 
 class Beatmap:
