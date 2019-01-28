@@ -29,8 +29,8 @@ class Beatmap:
         self.mode = data['mode']
         self.tags = data['tags']
         self.favourite_count = data['favourite_count']
-        self.playcount = data['playcount']
-        self.passcount = data['passcount']
+        self.play_count = data['playcount']
+        self.pass_count = data['passcount']
         self.max_combo = data['max_combo']
 
     def __str__(self):
@@ -46,7 +46,7 @@ class Scores:
         self.score_id = data['score_id']
         self.score = data["score"]
         self.username = data['username']
-        self.maxcombo = data["maxcombo"]
+        self.max_combo = data["maxcombo"]
         self.three_hundred = data["count300"]
         self.hundred = data["count100"]
         self.fifty = data["count50"]

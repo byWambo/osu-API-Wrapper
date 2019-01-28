@@ -38,7 +38,7 @@ class UserRecent:
     def __init__(self, data):
         self.beatmap = NotImplemented
         self.score = data["score"]
-        self.maxcombo = data["maxcombo"]
+        self.max_combo = data["maxcombo"]
         self.three_hundred = data["count300"]
         self.hundred = data["count100"]
         self.fifty = data["count50"]
@@ -60,7 +60,7 @@ class UserBest:
     def __init__(self, data):
         self.beatmap = NotImplemented
         self.score = data["score"]
-        self.maxcombo = data["maxcombo"]
+        self.max_combo = data["maxcombo"]
         self.three_hundred = data["count300"]
         self.hundred = data["count100"]
         self.fifty = data["count50"]
