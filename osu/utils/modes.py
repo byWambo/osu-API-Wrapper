@@ -1,7 +1,7 @@
 import enum
 
 
-class Modes:
+class Modes(enum.Enum):
 
     OSU = 0
     TAIKO = 1
