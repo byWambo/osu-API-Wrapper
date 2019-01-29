@@ -3,7 +3,7 @@
 A Python Wrapper for the osu! API
 
 
-## How does this work?
+## How does this work
 ```python
 import osu
 
