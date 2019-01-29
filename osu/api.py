@@ -1,4 +1,5 @@
 import requests
+from .utils.modes import Modes
 from .models import *
 
 
@@ -8,7 +9,7 @@ class API:
         self.token = token
         self.base_url = 'https://osu.ppy.sh'
 
-    def get_beatmaps(self, since=None, mode=0, limit=500):
+    def get_beatmaps(self, since=None, mode=Modes.OSU, limit=500):
         params = dict(k=self.token)
         if since:
             params.update({"since": since})
@@ -19,7 +20,7 @@ class API:
         except IndexError:
             return None
 
-    def get_user(self, name: str, mode=0):
+    def get_user(self, name: str, mode=Modes.OSU):
         params = dict(k=self.token)
         params.update({"m": mode, "u": name})
         r = requests.get(self.base_url + '/api/get_user', params=params)
@@ -28,7 +29,7 @@ class API:
         except IndexError:
             return None
 
-    def get_scores(self, beatmap_id: int, username=None, mode=0, limit=50):
+    def get_scores(self, beatmap_id: int, username=None, mode=Modes.OSU, limit=50):
         params = dict(k=self.token)
         if username:
             params.update({"u": username, "type": "string"})
@@ -39,7 +40,7 @@ class API:
         except IndexError:
             return None
 
-    def get_user_best(self, username: str, mode=0, limit=10):
+    def get_user_best(self, username: str, mode=Modes.OSU, limit=10):
         params = dict(k=self.token)
         if username:
             params.update({"u": username, "type": "string"})
@@ -50,7 +51,7 @@ class API:
         except IndexError:
             return None
 
-    def get_user_recent(self, username: str, mode=0, limit=10):
+    def get_user_recent(self, username: str, mode=Modes.OSU, limit=10):
         params = dict(k=self.token)
         if username:
             params.update({"u": username, "type": "string"})

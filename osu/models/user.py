@@ -1,3 +1,5 @@
+from ..utils import *
+
 __slots__ = ('User', 'UserRecent', 'UserBest')
 
 
@@ -36,7 +38,7 @@ class User:
 class UserRecent:
 
     def __init__(self, data):
-        self.beatmap = NotImplemented
+        self.beatmap_id = data['beatmap_id']
         self.score = data["score"]
         self.max_combo = data["maxcombo"]
         self.three_hundred = data["count300"]
@@ -46,9 +48,9 @@ class UserRecent:
         self.katu = data["countkatu"]
         self.geki = data["countgeki"]
         self.perfect = data["perfect"]
-        self.mods = NotImplemented
+        self.mods = mods.calculate(int(data['enabled_mods']))
         self.user_id = data["user_id"]
-        self.date = data["data"]
+        self.date = data["date"]
         self.rank = data["rank"]
 
     def __repr__(self):
@@ -58,7 +60,7 @@ class UserRecent:
 class UserBest:
 
     def __init__(self, data):
-        self.beatmap = NotImplemented
+        self.beatmap_id = data['beatmap_id']
         self.score = data["score"]
         self.max_combo = data["maxcombo"]
         self.three_hundred = data["count300"]
@@ -68,9 +70,9 @@ class UserBest:
         self.katu = data["countkatu"]
         self.geki = data["countgeki"]
         self.perfect = data["perfect"]
-        self.mods = NotImplemented
+        self.mods = mods.calculate(data['enabled_mods'])
         self.user_id = data["user_id"]
-        self.date = data["data"]
+        self.date = data["date"]
         self.rank = data["rank"]
         self.pp = data['pp']
 

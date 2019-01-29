@@ -9,6 +9,7 @@ A hopefully good osu! API Wrapper.
 import logging
 from collections import namedtuple
 from osu.client import Client
+from osu.utils.modes import Modes
 
 __title__ = 'osu-API-Wrapper'
 __author__ = 'Matthias K.'
