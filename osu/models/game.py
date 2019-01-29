@@ -1,3 +1,6 @@
+import osu
+
+
 class Game:
 
     def __init__(self, data):
@@ -5,7 +8,7 @@ class Game:
         self.start_time = data['start_time']
         self.end_time = data['end_time']
         self.beatmap_id = data['beatmap_id']
-        self.play_mode = data['play_mode']
+        self.play_mode = osu.Modes(int(data['play_mode']))
         self.match_type = data['match_type']
         self.scoring_type = data['scoring_type']
         self.team_type = data['team_type']
@@ -25,3 +28,6 @@ class Game:
         self.countkatu = data['countkatu']
         self.perfect = data['perfect']
         self.passed = data['pass']
+
+    def __repr__(self):
+        return '<osu.Game game_id={0.game_id} beatmap_id={0.beatmap_id}>'.format(self)
