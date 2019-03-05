@@ -18,9 +18,7 @@ with open('README.md', encoding='utf-8') as f:
 
 
 
-with open('requirements.txt') as f:
 
-    requirements = f.read().splitlines()
 
 
 
